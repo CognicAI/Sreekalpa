@@ -381,8 +381,8 @@
 
 <script>
   // Countdown — set your target launch date here
-  const launchDate = new Date('2026-08-01T00:00:00');
-
+const launchDate = new Date();
+launchDate.setDate(launchDate.getDate() + 60);
   function updateCountdown() {
     const now = new Date();
     const diff = launchDate - now;
