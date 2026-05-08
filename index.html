@@ -380,44 +380,48 @@
 </div>
 
 <script>
-  // Countdown — set your target launch date here
-const launchDate = new Date();
-launchDate.setDate(launchDate.getDate() + 60);
+  /*
+    Deployment-Based Fixed Countdown
+    --------------------------------
+    - Countdown starts from deployment date
+    - Same for every visitor
+    - Refresh does NOT reset
+    - Perfect for Vercel hosting
+    - Just set your deployment date once
+  */
+
+  // SET YOUR DEPLOYMENT DATE HERE
+  const deploymentDate = new Date("2025-05-15T00:00:00"); // Change to actual deploy date
+
+  // Launch = deployment + 60 days
+  const launchDate = new Date(deploymentDate);
+  launchDate.setDate(launchDate.getDate() + 60);
+
   function updateCountdown() {
     const now = new Date();
     const diff = launchDate - now;
 
     if (diff <= 0) {
-      document.getElementById('days').textContent = '00';
-      document.getElementById('hours').textContent = '00';
-      document.getElementById('minutes').textContent = '00';
-      document.getElementById('seconds').textContent = '00';
+      document.getElementById("days").textContent = "00";
+      document.getElementById("hours").textContent = "00";
+      document.getElementById("minutes").textContent = "00";
+      document.getElementById("seconds").textContent = "00";
       return;
     }
 
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
 
-    document.getElementById('days').textContent = String(d).padStart(2, '0');
-    document.getElementById('hours').textContent = String(h).padStart(2, '0');
-    document.getElementById('minutes').textContent = String(m).padStart(2, '0');
-    document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+    document.getElementById("days").textContent = String(days).padStart(2, "0");
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
   }
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
-
-  function handleNotify() {
-    const email = document.getElementById('email-input').value.trim();
-    if (!email || !email.includes('@')) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-    alert('Thank you! We will notify you at ' + email + ' when we launch.');
-    document.getElementById('email-input').value = '';
-  }
 </script>
 </body>
 </html>
