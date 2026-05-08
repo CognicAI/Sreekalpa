@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sreekalpa — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --dark: #0a0a0a;
+    --dark-2: #111111;
+    --dark-3: #1a1a1a;
+    --white: #f5f2ec;
+    --muted: #888880;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--dark);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,168,76,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 70% at 10% 80%, rgba(201,168,76,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Grid texture overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Top bar */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 60px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .logo span {
+    color: var(--white);
+  }
+
+  .contact-info {
+    display: flex;
+    gap: 32px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .contact-info a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .contact-info a:hover { color: var(--gold); }
+
+  /* Hero */
+  .hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px 60px;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .eyebrow::before, .eyebrow::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+
+  .headline em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .sub {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 64px;
+    font-weight: 300;
+  }
+
+  /* Countdown */
+  .countdown {
+    display: flex;
+    gap: 0;
+    margin-bottom: 72px;
+  }
+
+  .countdown-unit {
+    text-align: center;
+    padding: 0 32px;
+    position: relative;
+  }
+
+  .countdown-unit:not(:last-child)::after {
+    content: ':';
+    position: absolute;
+    right: -4px;
+    top: 8px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    color: rgba(201,168,76,0.3);
+    line-height: 1;
+  }
+
+  .countdown-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 7vw, 80px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1;
+    display: block;
+    min-width: 80px;
+  }
+
+  .countdown-label {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 10px;
+    display: block;
+  }
+
+  /* Divider */
+  .divider {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    margin: 0 auto 56px;
+    opacity: 0.4;
+  }
+
+  /* Email form */
+  .notify-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+    width: 100%;
+    border: 1px solid rgba(201,168,76,0.3);
+    transition: border-color 0.3s;
+  }
+
+  .form-row:focus-within {
+    border-color: rgba(201,168,76,0.7);
+  }
+
+  .form-row input {
+    flex: 1;
+    background: rgba(201,168,76,0.04);
+    border: none;
+    outline: none;
+    padding: 14px 20px;
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .form-row input::placeholder {
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .form-row button {
+    background: var(--gold);
+    border: none;
+    padding: 14px 24px;
+    color: var(--dark);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+    white-space: nowrap;
+  }
+
+  .form-row button:hover {
+    background: var(--gold-light);
+  }
+
+
+  /* Footer bar */
+  .footer-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: rgba(136,136,128,0.5);
+    text-transform: uppercase;
+  }
+
+  .socials {
+    display: flex;
+    gap: 20px;
+  }
+
+  .socials a {
+    color: rgba(136,136,128,0.5);
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    transition: color 0.3s;
+  }
+
+  .socials a:hover { color: var(--gold); }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .eyebrow { animation: fadeUp 0.8s ease 0.1s both; }
+  .headline { animation: fadeUp 0.8s ease 0.25s both; }
+  .sub { animation: fadeUp 0.8s ease 0.4s both; }
+  .countdown { animation: fadeUp 0.8s ease 0.55s both; }
+  .divider { animation: fadeUp 0.8s ease 0.7s both; }
+  .notify-label { animation: fadeUp 0.8s ease 0.75s both; }
+  .form-row { animation: fadeUp 0.8s ease 0.85s both; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .topbar { padding: 20px 24px; flex-direction: column; gap: 16px; }
+    .contact-info { gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .hero { padding: 60px 24px 40px; }
+    .countdown { gap: 0; }
+    .countdown-unit { padding: 0 16px; }
+    .services { grid-template-columns: 1fr; }
+    .service { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.12); padding: 36px 28px; }
+    .service:last-child { border-bottom: none; }
+    .footer-bar { padding: 16px 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="logo">Sree<span>kalpa</span></div>
+    <nav class="contact-info">
+      <a href="tel:+919999999999">+91 99999 99999</a>
+      <a href="mailto:hello@sreekalpa.in">hello@sreekalpa.in</a>
+      <span>Hyderabad, India</span>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <main class="hero">
+    <div class="eyebrow">Launching Soon</div>
+
+    <h1 class="headline">
+      Where Homes Find<br><em>Their People</em>
+    </h1>
+
+    <p class="sub">Premium Real Estate &mdash; Hyderabad &amp; Beyond</p>
+
+    <!-- Countdown -->
+    <div class="countdown">
+      <div class="countdown-unit">
+        <span class="countdown-number" id="days">00</span>
+        <span class="countdown-label">Days</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="hours">00</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="minutes">00</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="seconds">00</span>
+        <span class="countdown-label">Seconds</span>
+      </div>
+    </div>
+
+
+  </main>
+
+
+  <!-- Footer -->
+  <footer class="footer-bar">
+    <span>&copy; 2026 Sreekalpa &mdash; All rights reserved</span>
+    <div class="socials">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Countdown — set your target launch date here
+  const launchDate = new Date('2026-08-01T00:00:00');
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = launchDate - now;
+
+    if (diff <= 0) {
+      document.getElementById('days').textContent = '00';
+      document.getElementById('hours').textContent = '00';
+      document.getElementById('minutes').textContent = '00';
+      document.getElementById('seconds').textContent = '00';
+      return;
+    }
+
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+
+    document.getElementById('days').textContent = String(d).padStart(2, '0');
+    document.getElementById('hours').textContent = String(h).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  function handleNotify() {
+    const email = document.getElementById('email-input').value.trim();
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    alert('Thank you! We will notify you at ' + email + ' when we launch.');
+    document.getElementById('email-input').value = '';
+  }
+</script>
+</body>
+</html>
