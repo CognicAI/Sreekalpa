@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sreekalpa — Coming Soon</title>
+<title>Sreekalpa — Launch Countdown • 60 Days</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,7 +26,7 @@
     overflow-x: hidden;
   }
 
-  /* Background */
+  /* Background with luminous accent */
   body::before {
     content: '';
     position: fixed;
@@ -38,7 +38,7 @@
     z-index: 0;
   }
 
-  /* Grid texture overlay */
+  /* Subtle grid texture */
   body::after {
     content: '';
     position: fixed;
@@ -66,6 +66,7 @@
     align-items: center;
     padding: 28px 60px;
     border-bottom: 1px solid rgba(201,168,76,0.15);
+    flex-wrap: wrap;
   }
 
   .logo {
@@ -98,14 +99,14 @@
 
   .contact-info a:hover { color: var(--gold); }
 
-  /* Hero */
+  /* Hero section */
   .hero {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 80px 40px 60px;
+    padding: 60px 40px 50px;
     text-align: center;
   }
 
@@ -149,15 +150,38 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 64px;
+    margin-bottom: 48px;
     font-weight: 300;
+  }
+
+  /* Timeline note — 60 days from deployment */
+  .deployment-note {
+    margin-bottom: 32px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    background: rgba(201,168,76,0.08);
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 40px;
+    backdrop-filter: blur(4px);
+    font-weight: 400;
+  }
+
+  .deployment-note strong {
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.1em;
   }
 
   /* Countdown */
   .countdown {
     display: flex;
     gap: 0;
-    margin-bottom: 72px;
+    margin-bottom: 60px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .countdown-unit {
@@ -196,73 +220,25 @@
     display: block;
   }
 
-  /* Divider */
+  /* graceful divider */
   .divider {
     width: 1px;
-    height: 60px;
+    height: 50px;
     background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-    margin: 0 auto 56px;
+    margin: 0 auto 40px;
     opacity: 0.4;
   }
 
-  /* Email form */
-  .notify-label {
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 20px;
-  }
-
-  .form-row {
-    display: flex;
-    gap: 0;
-    max-width: 480px;
-    width: 100%;
-    border: 1px solid rgba(201,168,76,0.3);
-    transition: border-color 0.3s;
-  }
-
-  .form-row:focus-within {
-    border-color: rgba(201,168,76,0.7);
-  }
-
-  .form-row input {
-    flex: 1;
-    background: rgba(201,168,76,0.04);
-    border: none;
-    outline: none;
-    padding: 14px 20px;
-    color: var(--white);
-    font-family: 'Montserrat', sans-serif;
+  /* + small message about launch */
+  .launch-message {
     font-size: 12px;
-    letter-spacing: 0.05em;
-  }
-
-  .form-row input::placeholder {
     color: var(--muted);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
+    background: rgba(255,255,245,0.02);
+    padding: 8px 18px;
+    border-radius: 40px;
+    display: inline-block;
   }
-
-  .form-row button {
-    background: var(--gold);
-    border: none;
-    padding: 14px 24px;
-    color: var(--dark);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.3s;
-    white-space: nowrap;
-  }
-
-  .form-row button:hover {
-    background: var(--gold-light);
-  }
-
 
   /* Footer bar */
   .footer-bar {
@@ -275,6 +251,8 @@
     letter-spacing: 0.1em;
     color: rgba(136,136,128,0.5);
     text-transform: uppercase;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
   .socials {
@@ -301,22 +279,29 @@
   .eyebrow { animation: fadeUp 0.8s ease 0.1s both; }
   .headline { animation: fadeUp 0.8s ease 0.25s both; }
   .sub { animation: fadeUp 0.8s ease 0.4s both; }
-  .countdown { animation: fadeUp 0.8s ease 0.55s both; }
-  .divider { animation: fadeUp 0.8s ease 0.7s both; }
-  .notify-label { animation: fadeUp 0.8s ease 0.75s both; }
-  .form-row { animation: fadeUp 0.8s ease 0.85s both; }
+  .deployment-note { animation: fadeUp 0.8s ease 0.48s both; }
+  .countdown { animation: fadeUp 0.8s ease 0.6s both; }
+  .divider { animation: fadeUp 0.8s ease 0.72s both; }
+  .launch-message { animation: fadeUp 0.8s ease 0.8s both; }
 
   /* Responsive */
   @media (max-width: 768px) {
     .topbar { padding: 20px 24px; flex-direction: column; gap: 16px; }
     .contact-info { gap: 16px; flex-wrap: wrap; justify-content: center; }
-    .hero { padding: 60px 24px 40px; }
-    .countdown { gap: 0; }
+    .hero { padding: 50px 20px 40px; }
     .countdown-unit { padding: 0 16px; }
-    .services { grid-template-columns: 1fr; }
-    .service { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.12); padding: 36px 28px; }
-    .service:last-child { border-bottom: none; }
-    .footer-bar { padding: 16px 24px; flex-direction: column; gap: 12px; text-align: center; }
+    .countdown-unit:not(:last-child)::after { font-size: 38px; top: 4px; right: -6px; }
+    .countdown-number { min-width: 60px; font-size: 48px; }
+    .footer-bar { padding: 18px 24px; flex-direction: column; text-align: center; }
+    .deployment-note { font-size: 9px; letter-spacing: 0.15em; }
+  }
+
+  @media (max-width: 480px) {
+    .countdown-unit { padding: 0 10px; }
+    .countdown-unit:not(:last-child)::after { display: none; } /* cleaner on tiny screens */
+    .countdown { gap: 20px; }
+    .countdown-unit { padding: 0; }
+    .hero { padding: 40px 16px; }
   }
 </style>
 </head>
@@ -327,15 +312,15 @@
   <header class="topbar">
     <div class="logo">Sree<span>kalpa</span></div>
     <nav class="contact-info">
-      <a href="tel:+919999999999">+91 99999 99999</a>
-      <a href="mailto:hello@sreekalpa.in">hello@sreekalpa.in</a>
+      <a href="tel:+91 7995296451‬">+91 7995296451‬</a>
+      <a href="mailto:info@sreekalpa.in">info@sreekalpa.in</a>
       <span>Hyderabad, India</span>
     </nav>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero Section with Countdown -->
   <main class="hero">
-    <div class="eyebrow">Launching Soon</div>
+    <div class="eyebrow">Launching Soon site under construction</div>
 
     <h1 class="headline">
       Where Homes Find<br><em>Their People</em>
@@ -343,7 +328,12 @@
 
     <p class="sub">Premium Real Estate &mdash; Hyderabad &amp; Beyond</p>
 
-    <!-- Countdown -->
+    <!-- This note clarifies the 60-day countdown from deployment date -->
+    <div class="deployment-note">
+      <span>✦ 60-DAY COUNTDOWN ✦</span>
+    </div>
+
+    <!-- Main Countdown Timer (Days, Hours, Minutes, Seconds) -->
     <div class="countdown">
       <div class="countdown-unit">
         <span class="countdown-number" id="days">00</span>
@@ -362,10 +352,7 @@
         <span class="countdown-label">Seconds</span>
       </div>
     </div>
-
-
   </main>
-
 
   <!-- Footer -->
   <footer class="footer-bar">
@@ -380,48 +367,96 @@
 </div>
 
 <script>
-  /*
-    Deployment-Based Fixed Countdown
-    --------------------------------
-    - Countdown starts from deployment date
-    - Same for every visitor
-    - Refresh does NOT reset
-    - Perfect for Vercel hosting
-    - Just set your deployment date once
-  */
+  /**************************************************************
+   *  60-DAY COUNTDOWN FROM DEPLOYMENT DATE (VERCEL-FRIENDLY)
+   *  -----------------------------------------------------------
+   *  • Countdown starts based on the actual deployment timestamp.
+   *  • Use the `DEPLOYMENT_START` variable: set it exactly to the
+   *    date & time when you deploy on Vercel (or any platform).
+   *  • The countdown will then run for exactly 60 days from that moment,
+   *    showing days, hours, minutes, seconds remaining.
+   *  • After launch (once countdown reaches zero), it stays at "00" elegantly.
+   *  • No browser storage needed; consistent for all users.
+   **************************************************************/
 
-  // SET YOUR DEPLOYMENT DATE HERE
-  const deploymentDate = new Date("2025-05-15T00:00:00"); // Change to actual deploy date
+  // ==========  IMPORTANT: SET YOUR ACTUAL DEPLOYMENT DATE/TIME HERE ==========
+  // ✦ TODAY'S DATE: May 8, 2026 at 12:00 PM IST (UTC+5:30) ✦
+  // This matches the current date as of this deployment. The countdown will
+  // show exactly 60 days remaining from May 8, 2026 → Launch on July 7, 2026.
+  // You can adjust the hour/minute/timezone as needed.
+  const DEPLOYMENT_START = new Date("2026-05-08T12:00:00+05:30");
+  // ==========================================================================
 
-  // Launch = deployment + 60 days
-  const launchDate = new Date(deploymentDate);
-  launchDate.setDate(launchDate.getDate() + 60);
+  // Calculate launch date (60 days after deployment start)
+  const launchDate = new Date(DEPLOYMENT_START);
+  launchDate.setUTCDate(launchDate.getUTCDate() + 60);
+  // Also preserve local time offset: we ensure the same hour/minute/second shift
+  // by using the same numeric time value. setDate handles days correctly across months.
+
+  function formatTwoDigits(num) {
+    return String(num).padStart(2, '0');
+  }
 
   function updateCountdown() {
-    const now = new Date();
-    const diff = launchDate - now;
+    const now = new Date();        // current user time
+    const remaining = launchDate - now;   // milliseconds left
 
-    if (diff <= 0) {
-      document.getElementById("days").textContent = "00";
-      document.getElementById("hours").textContent = "00";
-      document.getElementById("minutes").textContent = "00";
-      document.getElementById("seconds").textContent = "00";
+    if (remaining <= 0) {
+      // Launch mode: all zeros, elegant finish
+      document.getElementById('days').textContent = '00';
+      document.getElementById('hours').textContent = '00';
+      document.getElementById('minutes').textContent = '00';
+      document.getElementById('seconds').textContent = '00';
       return;
     }
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
+    const totalSeconds = Math.floor(remaining / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
 
-    document.getElementById("days").textContent = String(days).padStart(2, "0");
-    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    document.getElementById('days').textContent = formatTwoDigits(days);
+    document.getElementById('hours').textContent = formatTwoDigits(hours);
+    document.getElementById('minutes').textContent = formatTwoDigits(minutes);
+    document.getElementById('seconds').textContent = formatTwoDigits(seconds);
   }
 
+  // Initial update
   updateCountdown();
-  setInterval(updateCountdown, 1000);
+
+  // Update every second for real-time precision
+  const interval = setInterval(updateCountdown, 1000);
+
+  // Optional: safeguard for extremely large intervals (but fine)
+  window.addEventListener('beforeunload', () => {
+    clearInterval(interval);
+  });
+
+  // Log helpful info to console for debugging (not visible to users)
+  console.log(`[Sreekalpa] Deployment timestamp: ${DEPLOYMENT_START.toString()}`);
+  console.log(`[Sreekalpa] Launch (60 days later): ${launchDate.toString()}`);
+  console.log(`[Sreekalpa] Time until launch: ${Math.floor((launchDate - new Date()) / (1000 * 60 * 60 * 24))} days remaining`);
 </script>
+
+<!-- 
+  --- COUNTDOWN LOGIC EXPLANATION (for reference) ---
+  This page implements a fixed 60-day countdown from the exact moment your site
+  is deployed. The variable `DEPLOYMENT_START` has been set to today's date:
+  May 8, 2026 at 12:00 PM IST (UTC+5:30). The script then adds 60 days
+  automatically. Every visitor sees the same remaining time until launch.
+
+  **Today's date (May 8, 2026) is now the official deployment start.**
+  The countdown will reach zero on July 7, 2026 (60 days from May 8).
+
+  **For Vercel deployment**:
+  - This static HTML already contains the correct deployment date (today).
+  - Simply deploy this file to Vercel. No further changes needed.
+  - The countdown will work immediately and consistently for all visitors.
+  - If you need to adjust the exact hour or timezone, modify the 
+    DEPLOYMENT_START value above (e.g., "2026-05-08T00:00:00+05:30" for midnight).
+  
+  - No external runtime dependencies, fully self-contained.
+-->
 </body>
 </html>
